@@ -1,0 +1,62 @@
+default_agent: agentcore_langgraph_runtime
+agents:
+  agentcore_langgraph_runtime:
+    name: agentcore_langgraph_runtime
+    language: python
+    node_version: '20'
+    entrypoint: /workspaces/aws-bedrock-langgraph/agentcore_runtime.py
+    deployment_type: container
+    runtime_type: null
+    platform: linux/arm64
+    container_runtime: docker
+    source_path: /workspaces/aws-bedrock-langgraph
+    aws:
+      execution_role: arn:aws:iam::239374299018:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-0e3ca01f9d
+      execution_role_auto_create: false
+      account: '239374299018'
+      region: us-east-1
+      ecr_repository: 239374299018.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-agentcore_langgraph_runtime
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: agentcore_langgraph_runtime-79rGKs334p
+      agent_arn: arn:aws:bedrock-agentcore:us-east-1:239374299018:runtime/agentcore_langgraph_runtime-79rGKs334p
+      agent_session_id: 3f6bf047-71cf-4181-9af0-d876028e7c80
+    codebuild:
+      project_name: bedrock-agentcore-agentcore_langgraph_runtime-builder
+      execution_role: arn:aws:iam::239374299018:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-0e3ca01f9d
+      source_bucket: bedrock-agentcore-codebuild-sources-239374299018-us-east-1
+    memory:
+      mode: NO_MEMORY
+      memory_id: null
+      memory_arn: null
+      memory_name: null
+      event_expiry_days: 30
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: GROQ_API_KEY
+    api_key_credential_provider_name: agentcore_langgraph_runtime_groq_api_key
+    is_generated_by_agentcore_create: false
